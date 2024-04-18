@@ -1,6 +1,5 @@
 import os
 import csv
-import pandas as pd
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -39,49 +38,16 @@ with open(csvpath) as csvfile:
         max_rev_change_date = str(date[rev_change.index(max(rev_change))])
         min_rev_change_date = str(date[rev_change.index(min(rev_change))])
 
-
+    #prints the average along with the greatest and least change
     print("Avereage Revenue Change: $", round(avg_rev_change))
     print("Greatest Increase in Revenue:", max_rev_change_date,"($", max_rev_change,")")
     print("Greatest Decrease in Revenue:", min_rev_change_date,"($", min_rev_change,")")
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    # headers = next(csvreader)
-    # lines
 
-    # rowcount = 0
-    # profitloss = 0
-    # averageprolosschange = 0
-
-
-    # for row in csvreader: # counts the months passed
-    #     rowcount+= 1
-    #     profitloss = int(row[1]) + profitloss
-    #     averageprolosschange = (((int(row[1])) - int(row[1]))+ averageprolosschange)/rowcount
-
-
-    # print("Total Month Count:" ,rowcount)
-    # print("Profit / Loss: $", profitloss)
-    # print(averageprolosschange)
-    
-            
-    # use of next to skip first title row in csv file
-
+# This Writes all the outputs into the .txt file 
+with open(csvoutput,"w") as writefile:
+    writefile.write(f"Total Months:{len(date)}\n")
+    writefile.write(f"Total Revenue: ${sum(revenue)}\n")
+    writefile.write(f"Avereage Revenue Change: ${round(avg_rev_change)}\n")
+    writefile.write(f"Greatest Increase in Revenue: {max_rev_change_date} ${max_rev_change}\n")
+    writefile.write(f"Greatest Decrease in Revenue:{min_rev_change_date} ${min_rev_change}")
